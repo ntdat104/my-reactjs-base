@@ -12,9 +12,15 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
+    "axios": "^0.21.4",
+    "classnames": "^2.3.1",
+    "i18next": "^20.6.1",
+    "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.12.0",
     "react-redux": "^7.2.0",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "typescript": "~4.1.5"
   },
@@ -22,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fwrite": "prettier --config .prettierrc --write src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,5 +45,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.8",
+    "prettier": "^2.4.0",
+    "sass": "^1.40.0"
   }
 }

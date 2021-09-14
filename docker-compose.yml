@@ -1,0 +1,20 @@
+version: "3"
+
+networks:
+  common:
+
+services:
+  react-base:
+    container_name: react-base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    hostname: react-base
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    networks:
+      - common
