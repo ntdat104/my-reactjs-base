@@ -29,7 +29,7 @@ export const Counter: React.FC = () => {
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button className={styles.button} onClick={() => dispatch(incrementByAmount(incrementValue))}>
-          Add Amount 123
+          Add Amount
         </button>
         <button className={styles.asyncButton} onClick={() => dispatch(incrementAsync(incrementValue))}>
           Add Async
