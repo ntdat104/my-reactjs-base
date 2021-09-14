@@ -1,6 +1,20 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk, RootState } from "../../app/store";
+import { RootState, AppThunk } from "../../app/store";
 import { fetchCount } from "./counter-api";
+
+export const incrementAsync = createAsyncThunk("counter/fetchCount", async (amount: number) => {
+  const response = await fetchCount(amount);
+  return response.data;
+});
+
+export const incrementIfOdd =
+  (amount: number): AppThunk =>
+  (dispatch, getState) => {
+    const currentValue = selectCount(getState());
+    if (currentValue % 2 === 1) {
+      dispatch(incrementByAmount(amount));
+    }
+  };
 
 export interface CounterState {
   value: number;
@@ -12,11 +26,6 @@ const initialState: CounterState = {
   status: "idle",
 };
 
-export const incrementAsync = createAsyncThunk("counter/fetchCount", async (amount: number) => {
-  const response = await fetchCount(amount);
-  return response.data;
-});
-
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
@@ -27,11 +36,18 @@ export const counterSlice = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
+    incrementByAmount: (state: CounterState, action: PayloadAction<number>) => {
+      state.value += action.payload;
+    },
+
+    incrementSagaAsync: (state: CounterState, action: PayloadAction<number>) => {
+      state.status = "loading";
+    },
+    incrementSagaAsyncSuccess: (state: CounterState, action: PayloadAction<number>) => {
+      state.status = "idle";
       state.value += action.payload;
     },
   },
-
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, (state) => {
@@ -44,17 +60,9 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, incrementSagaAsync, incrementSagaAsyncSuccess } =
+  counterSlice.actions;
 
 export const selectCount = (state: RootState) => state.counter.value;
-
-export const incrementIfOdd =
-  (amount: number): AppThunk =>
-  (dispatch, getState) => {
-    const currentValue = selectCount(getState());
-    if (currentValue % 2 === 1) {
-      dispatch(incrementByAmount(amount));
-    }
-  };
 
 export default counterSlice.reducer;
