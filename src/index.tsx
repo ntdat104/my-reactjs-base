@@ -1,15 +1,19 @@
+import { CssBaseline } from "@material-ui/core";
+import { ConnectedRouter } from "connected-react-router";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "styles/global.scss";
+import { history } from "utils";
 import App from "./App";
 import { store } from "./app/store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <CssBaseline />
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById("root")
 );
