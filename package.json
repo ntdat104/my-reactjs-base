@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/types": "^5.1.0",
     "@types/react-router-dom": "^5.1.8",
     "prettier": "^2.4.0",
     "sass": "^1.40.0"

@@ -1,27 +1,33 @@
-import { NotFound, ProtectedRoute } from "components/common";
-import LoginPage from "features/auth/pages/login-page.component";
-import { Route, Switch, Redirect } from "react-router-dom";
-import AdminPage from "features/admin/admin-page.component";
+import { NotFound, PrivateRoute, RedirectRoute } from "components/common";
+import { Route, Switch } from "react-router-dom";
+import React, { Suspense } from "react";
+
+const LoginPage = React.lazy(() => import("features/auth/pages/login-page.component"));
+const AdminPage = React.lazy(() => import("features/admin/admin-page.component"));
 
 const App: React.FC = () => {
   return (
     <>
       <Switch>
         <Route exact path="/">
-          <Redirect to="/admin" />
+          <RedirectRoute to="/admin" />
         </Route>
 
         <Route path="/login">
-          <LoginPage />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LoginPage />
+          </Suspense>
         </Route>
 
-        <ProtectedRoute path="/admin">
-          <AdminPage />
-        </ProtectedRoute>
+        <PrivateRoute path="/admin">
+          <Suspense fallback={<div>Loading...</div>}>
+            <AdminPage />
+          </Suspense>
+        </PrivateRoute>
 
-        <Route>
+        <PrivateRoute path="*">
           <NotFound />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </>
   );

@@ -34,14 +34,14 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <Paper elevation={1} className={classes.box}>
+      <Paper elevation={3} className={classes.box}>
         <Typography variant="h5" component="h1">
           Student Management
         </Typography>
 
         <Box mt={4}>
           <Button fullWidth variant="contained" color="primary" onClick={handleLoginClick}>
-            {isLogging && <CircularProgress size={20} color="secondary" />} &nbsp; Fake Login
+            {isLogging && <CircularProgress size={20} color="inherit" />} &nbsp; Fake Login
           </Button>
         </Box>
       </Paper>

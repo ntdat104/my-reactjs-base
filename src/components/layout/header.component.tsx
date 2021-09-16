@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import { useAppDispatch } from "app/hooks";
 import { authActions } from "features/auth/auth-slice";
 import React from "react";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +30,11 @@ export const Header: React.FC = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography color="inherit" variant="h6" className={classes.title}>
             Student Management
           </Typography>
 
-          <Button color="inherit" onClick={handleLogoutClick}>
+          <Button variant="contained" color="secondary" endIcon={<ExitToAppIcon />} onClick={handleLogoutClick}>
             Logout
           </Button>
         </Toolbar>

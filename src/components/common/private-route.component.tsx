@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 
-export const ProtectedRoute: React.FC<RouteProps> = (props) => {
+export const PrivateRoute: React.FC<RouteProps> = (props) => {
   // Check if user is logged in
   // If yes, show route
   // Otherwise, redirect to login page
