@@ -40,7 +40,7 @@ export class SessionStorage {
     this.save();
   }
 
-  public clear() {
+  public clear(): void {
     this.sessionStorage.clear();
   }
 }

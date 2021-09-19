@@ -40,7 +40,7 @@ export class LocalStorage {
     this.save();
   }
 
-  public clear() {
+  public clear(): void {
     this.localStorage.clear();
   }
 }
