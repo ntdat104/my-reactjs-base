@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { history } from "utils";
 import App from "./App";
 import { store } from "./app/store";
+import "i18n/i18n";
 
 render(
   <Provider store={store}>

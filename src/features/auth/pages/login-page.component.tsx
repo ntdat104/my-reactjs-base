@@ -1,7 +1,19 @@
-import { Box, Button, CircularProgress, makeStyles, Paper, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  FormControl,
+  InputLabel,
+  makeStyles,
+  Paper,
+  Select,
+  Typography,
+  MenuItem,
+} from "@material-ui/core";
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import * as React from "react";
+import React, { useState } from "react";
 import { authActions, selectIsLogging } from "../auth-slice";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginPage: React.FC = () => {
+  const [lang, setLang] = useState("en");
+  const { t, i18n } = useTranslation();
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const isLogging = useAppSelector(selectIsLogging);
@@ -32,17 +46,37 @@ const LoginPage: React.FC = () => {
     );
   };
 
+  const handleChange = (e: any) => {
+    setLang(e.target.value);
+    i18n.changeLanguage(e.target.value);
+  };
+
   return (
     <div className={classes.root}>
       <Paper elevation={3} className={classes.box}>
         <Typography variant="h5" component="h1">
-          Student Management
+          {t("login.title")}
         </Typography>
 
         <Box mt={4}>
           <Button fullWidth variant="contained" color="primary" onClick={handleLoginClick}>
             {isLogging && <CircularProgress size={20} color="inherit" />} &nbsp; Fake Login
           </Button>
+        </Box>
+        <Box mt={4}>
+          <FormControl fullWidth variant="outlined" color="secondary">
+            <InputLabel id="demo-simple-select-outlined-label">Language</InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={lang}
+              onChange={handleChange}
+              label="Language"
+            >
+              <MenuItem value="en">English</MenuItem>
+              <MenuItem value="vi">Vietnamese</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
       </Paper>
     </div>
