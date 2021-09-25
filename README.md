@@ -1,1 +1,1 @@
-# init project my-reactjs-base
+# init base React

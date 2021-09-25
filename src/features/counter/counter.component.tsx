@@ -11,7 +11,7 @@ import {
 } from "./counter-slice";
 import "./counter.component.scss";
 
-export const Counter: React.FC = () => {
+const Counter: React.FC = () => {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState("2");
@@ -47,3 +47,5 @@ export const Counter: React.FC = () => {
     </div>
   );
 };
+
+export default React.memo(Counter);

@@ -47,4 +47,4 @@ const AdminPage: React.FC = () => {
   );
 };
 
-export default AdminPage;
+export default React.memo(AdminPage);

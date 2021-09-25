@@ -1,6 +1,7 @@
 import { NotFound, PrivateRoute, RedirectRoute } from "components/common";
-import { Route, Switch } from "react-router-dom";
 import React, { Suspense } from "react";
+import { Route, Switch } from "react-router-dom";
+import "styles/globals.scss";
 
 const LoginPage = React.lazy(() => import("features/auth/pages/login-page.component"));
 const AdminPage = React.lazy(() => import("features/admin/admin-page.component"));
