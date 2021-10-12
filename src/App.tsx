@@ -1,4 +1,6 @@
-import { NotFound, PrivateRoute, RedirectRoute } from "components/common";
+import NotFound from "components/common/not-found.component";
+import PrivateRoute from "components/common/private-route.component";
+import RedirectRoute from "components/common/redirect-route.component";
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import "styles/globals.scss";

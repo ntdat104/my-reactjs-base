@@ -3,12 +3,12 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useAppDispatch } from "app/hooks";
 import { authActions } from "features/auth/auth-slice";
 import React from "react";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
 
@@ -42,3 +42,5 @@ export const Header: React.FC = () => {
     </div>
   );
 };
+
+export default Header;

@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 
-export const PrivateRoute: React.FC<RouteProps> = (props) => {
+const PrivateRoute: React.FC<RouteProps> = (props) => {
   // Check if user is logged in
   // If yes, show route
   // Otherwise, redirect to login page
@@ -10,3 +10,5 @@ export const PrivateRoute: React.FC<RouteProps> = (props) => {
 
   return <Route {...props} />;
 };
+
+export default PrivateRoute;

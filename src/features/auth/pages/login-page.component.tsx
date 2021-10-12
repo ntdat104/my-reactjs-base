@@ -83,4 +83,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default React.memo(LoginPage);
+export default LoginPage;

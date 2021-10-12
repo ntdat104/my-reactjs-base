@@ -1,5 +1,6 @@
 import { Box, makeStyles } from "@material-ui/core";
-import { Header, Sidebar } from "components/layout";
+import Header from "components/layout/header.component";
+import Sidebar from "components/layout/sidebar.component";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,4 +48,4 @@ const AdminPage: React.FC = () => {
   );
 };
 
-export default React.memo(AdminPage);
+export default AdminPage;

@@ -4,7 +4,7 @@ import authReducer from "features/auth/auth-slice";
 import createSagaMiddleware from "redux-saga";
 import { history } from "utils";
 import counterReducer from "../features/counter/counter-slice";
-import rootSaga from "./rootSaga";
+import rootSaga from "./root-saga";
 
 const rootReducer = combineReducers({
   router: connectRouter(history),

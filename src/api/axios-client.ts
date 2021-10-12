@@ -1,8 +1,9 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import queryString from "query-string";
+import ENV from "constants/env";
 
-export const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_BASE_API_URL || "",
+const axiosClient = axios.create({
+  baseURL: ENV.REACT_APP_BASE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -35,3 +36,5 @@ axiosClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export default axiosClient;

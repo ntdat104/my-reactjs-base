@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Sidebar: React.FC = () => {
+const Sidebar: React.FC = () => {
   const classes = useStyles();
 
   return (
@@ -51,3 +51,5 @@ export const Sidebar: React.FC = () => {
     </div>
   );
 };
+
+export default Sidebar;
